@@ -15,10 +15,7 @@ class Stream:
     """
     The main class that allows to concatenate functions and its return values.
     """
-    def __getattribute__(self, name):
-        fun = (getattr(__builtins__, name, None)
-               or locals().get(name)
-               or globals().get(name))
+    def __getitem__(self, fun):
         if callable(fun):
             return _Function(self, fun)
-        raise AttributeError("Function not found.")
+        raise AttributeError("Function {} not found.", fun.__name__)
