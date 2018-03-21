@@ -24,7 +24,7 @@ class _Function:
 
     def __ror__(self, value):
         result = self.function(value)
-        return result
+        return result if result else value
 
     def __callable__(self, *args, **kwargs):
         return self.function(*args, **kwargs)

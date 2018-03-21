@@ -31,7 +31,6 @@ class Test(unittest.TestCase):
         f = File()
         s = funstream.Stream()
 
-        # value = 2 | s[str] & s[f.write] | s[partial(add, '2')]
-        value = 2 | s[str] & s[f.write]
+        value = 2 | s[str] | s[f.write] | s[partial(add, '2')]
         self.assertEqual(value, "22", "2 and 2 not 22!")
         self.assertEqual(f.value, "2", "2 is not written by dummy file")
