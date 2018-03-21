@@ -16,7 +16,7 @@ Example of use
     def mul3(a):
         return a*3
 
-    fns = funstream
+    fns = funstream.Stream()
 
     2 | fns[sum2] | fns[mul3] | fns[print]
 ```
