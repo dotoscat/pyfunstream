@@ -22,15 +22,10 @@ class Test(unittest.TestCase):
         self.assertEqual(value, 12, "With lambda no equal to 12!")
 
     def test3_chain(self):
-        class File:
-            def __init__(self):
-                value = 0
-
-            def write(self, value):
-                self.value = value
-        f = File()
         s = funstream.Stream()
 
-        value = 2 | s[str] | s[f.write] | s[partial(add, '2')]
+        value = 2 | s[str] | s[partial(add, '2')]
         self.assertEqual(value, "22", "2 and 2 not 22!")
-        self.assertEqual(f.value, "2", "2 is not written by dummy file")
+
+    def test4_last_value(self):
+        pass
