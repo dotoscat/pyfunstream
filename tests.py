@@ -28,4 +28,8 @@ class Test(unittest.TestCase):
         self.assertEqual(value, "22", "2 and 2 not 22!")
 
     def test4_last_value(self):
-        pass
+        s = funstream.Stream()
+        2 | s[lambda n: n + 2]
+        value = s.last_value | s[str] 
+        self.assertEqual(value, s.last_value, "Last values, str & str, are not equal.")
+        self.assertEqual(s.last_value, "4", "Last values is not equal to 4!")

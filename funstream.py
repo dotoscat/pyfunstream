@@ -24,7 +24,8 @@ class _Function:
 
     def __ror__(self, value):
         result = self.function(value)
-        return result if result else value
+        self.stream.value = result
+        return result
 
     def __callable__(self, *args, **kwargs):
         return self.function(*args, **kwargs)
@@ -33,6 +34,13 @@ class Stream:
     """
     The main class that allows to concatenate functions and their return values.
     """
+    def __init__(self):
+        self.value = None
+
+    @property
+    def last_value(self):
+        return self.value
+
     def __getitem__(self, fun):
         if callable(fun):
             return _Function(self, fun)
