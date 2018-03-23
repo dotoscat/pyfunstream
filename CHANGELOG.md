@@ -8,3 +8,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - Keep the last value on the stream
+- Use the same stream to pass the value to the next function call
