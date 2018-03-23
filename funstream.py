@@ -23,6 +23,8 @@ class _Function:
         self.function = function
 
     def __ror__(self, value):
+        if isinstance(value, Stream):
+            value = value.value
         result = self.function(value)
         self.stream.value = result
         return result
