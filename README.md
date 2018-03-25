@@ -34,7 +34,22 @@ Example of use
 
     2 | fns[lambda n: n*3]
     fns | fns[lambda n: n + 2]
-    # fns.last_value == 8 
+    # fns.last_value == 8
+
+    # Partials
+
+    def mysum(a, b):
+        return a + b
+
+    def mymul(a, b):
+        return a*b
+
+    def addletter(letter, chain):
+        return chain + letter
+
+    s = funstream.Stream()
+    value = 2 | s[(mysum, 2)] | s[(mymul, 2)] | s[str] | s[(addletter, 'a')] 
+    # value == "8a"
 
 ```
 
