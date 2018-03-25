@@ -53,6 +53,12 @@ Example of use
 
 ```
 
+TODO
+====
+
+- Incorpore mypy to the project, at least checkout.
+- Store calls and its values through the stream (function call, value, return value).
+
 License
 =======
 
