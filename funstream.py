@@ -47,6 +47,8 @@ class Stream:
 
     def __getitem__(self, fun):
         if isinstance(fun, tuple):
+            if not fun:
+                raise RuntimeError("Do not pass an emtpy tuple.")
             function, *arguments = fun
             if not callable(function):
                 raise RuntimeError("First element in the tuple must be a callable.")

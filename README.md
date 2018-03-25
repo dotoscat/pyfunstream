@@ -4,6 +4,14 @@ pyfunstream
 This module provide a simple mechanism to chain functions, only using
 the operator overloading and a pair of classes
 
+
+Features
+========
+
+- Functional programming with the pipe | operator.
+- The stream stores the returned value by the last function.
+- Partials.
+
 Example of use
 ==============
 
