@@ -56,7 +56,7 @@ Example of use
 TODO
 ====
 
-- Incorpore mypy to the project, at least checkout.
+- Incorporate mypy to the project, at least a look.
 - Store calls and its values through the stream (function call, value, return value).
 
 License
