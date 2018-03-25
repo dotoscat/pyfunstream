@@ -16,6 +16,8 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 # ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+from functools import partial
+
 class _Function:
     """This helps to chain the return values and the functions."""
     def __init__(self, stream, function):
@@ -44,6 +46,11 @@ class Stream:
         return self.value
 
     def __getitem__(self, fun):
+        if isinstance(fun, tuple):
+            function, *arguments = fun
+            if not callable(function):
+                raise RuntimeError("First element in the tuple must be a callable.")
+            fun = partial(function, *arguments)
         if callable(fun):
             return _Function(self, fun)
         raise AttributeError("Function {} not found.", fun.__name__)

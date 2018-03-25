@@ -33,3 +33,17 @@ class Test(unittest.TestCase):
         value = s.last_value | s[str] 
         self.assertEqual(value, s.last_value, "Last values, str & str, are not equal.")
         self.assertEqual(s.last_value, "4", "Last values is not equal to 4!")
+
+    def test5_partials(self):
+        def mysum(a, b):
+            return a + b
+
+        def mymul(a, b):
+            return a*b
+
+        def addletter(letter, chain):
+            return chain + letter
+
+        s = funstream.Stream()
+        value = 2 | s[(mysum, 2)] | s[(mymul, 2)] | s[str] | s[(addletter, 'a')]
+        self.assertEqual(value, "8a", "the partials failed!")
